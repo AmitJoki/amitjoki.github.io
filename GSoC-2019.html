@@ -64,27 +64,29 @@
         <p>The solution was to let the instructors and
           facilitators choose and restrict what Wikis they want to be tracked. This will help in reducing noise from
           other irrelevant edits which belong to Wikis that don't belong to a Course.</p>
-        <p>The Pull Request — <a
-            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/2922"><code>#2922</code></a>
+        <p>The Pull Request — <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/2922">#2922</a>
           added a new React Component — <code>&lt;WikiSelect&gt;</code>. It made use of the excellent <a
-            href="https://github.com/JedWatson/react-select">React-Select</a> package. <code>&lt;WikiSelect&gt;</code> is a React Component
-          and it is a intuitive Wiki Selector. It has both <i>single</i> &amp; <i>multi</i> mode so more than one <code>Wiki</code> could be
+            href="https://github.com/JedWatson/react-select">React-Select</a> package. <code>&lt;WikiSelect&gt;</code>
+          is a React Component
+          and it is a intuitive Wiki Selector. It has both <i>single</i> &amp; <i>multi</i> mode so more than one
+          <code>Wiki</code> could be
           tracked.</p>
         <p>Once that was covered, we had to actually put it to
           use. This led to my second Pull Request — <a
-            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/2957"><code>#2957</code></a>
+            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/2957">#2957</a>
         </p>
         <p>In this Pull Request, I added a join table between
           <code>Course</code> and <code>Wiki</code> and hence the name, <code>CoursesWikis</code>. Through this table we
           would
-          track which <code>Course</code> has which wikis enabled, which will ofcourse be updated via the <code>&lt;WikiSelect&gt;</code>
+          track which <code>Course</code> has which wikis enabled, which will ofcourse be updated via the
+          <code>&lt;WikiSelect&gt;</code>
           component from the earlier PR.</p>
         <p>With all the barebone setup complete, it was time to
           actually test whether the functionality was working as intended. It had to work without breaking existing
           tests.
           It
           was achieved via this Pull Request — <a
-            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3020"><code>#3020</code></a>,
+            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3020">#3020</a>,
           which added the <code>rspec</code> tests for the new functionality.
           <figure>
             <img
@@ -112,8 +114,7 @@
           indicates
           the
           tracked status of an article.</p>
-        <p>The Pull Request — <a
-            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3102"><code>#3102</code></a>
+        <p>The Pull Request — <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3102">#3102</a>
           set
           up the the foundation to build on.</p>
         <p>This included creating a join table between
@@ -125,12 +126,12 @@
           so lot of time was spent on getting this right and making sure all the existing tests passed.</p>
         <p>Once it was done, it was time to put the UI to work
           using the backend setup from the previous pull request. Pull Request — <a
-            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3175"><code>#3175</code></a>
+            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3175">#3175</a>
           is
           where I’ve used React Switch package for the neat UI for changing the tracked status of an article.</p>
         <p>Next, these two Pull Requests — <a
-            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3195"><code>#3195</code></a>
-          &amp; <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3204"><code>#3204</code></a>
+            href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3195">#3195</a>
+          &amp; <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3204">#3204</a>
           added a way to filter the articles based on the following tracked status values:</p>
         <ol>
           <li>Tracked</li>
@@ -147,21 +148,20 @@
         <h2><a id="Miscellaneous" href="#Miscellaneous"></a>Miscellaneous</h2>
         <p>The following Pull Requests fix various issues.</p>
         <ol>
-          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3051"><code>#3051</code></a>
+          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3051">#3051</a>
             –
             Adds wikidata namespace support.</li>
-          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3074"><code>#3074</code></a>
+          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3074">#3074</a>
             –
             Normalizes the labels of revision titles.</li>
-          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3143"><code>#3143</code></a>
+          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3143">#3143</a>
             –
-            Fixes issue <a
-              href="https://github.com/WikiEducationFoundation/WikiEduDashboard/issues/3024"><code>#3024</code></a>.
+            Fixes issue <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/issues/3024">#3024</a>.
           </li>
-          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3147"><code>#3147</code></a>
+          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3147">#3147</a>
             –
             Adds specific project names to non-Wikipedia projects.</li>
-          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3185"><code>#3185</code></a>
+          <li><a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3185">#3185</a>
             –
             Fixes the alignment of Article Finder UI.</li>
         </ol>

@@ -8,15 +8,15 @@ code {
   word-break: break-word;
 }
 
-[href*='/pull/'], [href*='/issues/'] {
-  text-decoration: none;
-}
-
-[href*='/pull/']:hover, [href*='/issues/']:hover {
-  text-decoration: underline;
-}
-
 img + figcaption {
   display: block;
+  text-align: center;
+}
+
+.links a {
+  display: inline-block;
+  margin: 10px;
+}
+.links {
   text-align: center;
 }

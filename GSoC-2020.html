@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>GSoC 2029</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@nishanths/zoom.js@2.0.1/css/zoom.css">
+  <link rel="stylesheet" href="custom.css">
+</head>
+
+<body>
+  <header>
+    <h1>WikiEduDashboard</h1>
+    <p>Google Summer of Code 2020</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="AmitJoki_Resume.pdf" target="_blank">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <section>
+        <p>I was part of Google Summer of Code 2019 with
+          Wikimedia and I was overjoyed when I came to know that I was going to work with the amazing folks (read: the
+          best mentor anyone could get: Sage Ross) at WikiEduDashboard once again as part of Google Summer of Code 2020.
+        </p>
+        <p>In 2019, my project was something discrete. I could point you to the parts I worked on which weren&rsquo;t
+          there before and I could go, &ldquo;Hey, see this feature? I worked on it!&rdquo;</p>
+        <p>But it was going to be different this time around, for my project was abstract, something that could only be
+          felt. My proposal was to improve the loading speed of WikiEduDashboard.</p>
+        <p>The User Experience for people with low-bandwidth internet was not upto the mark. There were lots of
+          resources needlessly being downloaded which was making the website seem slow.</p>
+        <h2><a id="problems" href="#problems"></a>Problem</h2>
+        <br />
+        <p>
+          <ol>
+            <li>Redundant resources were being downloaded.</li>
+            <li>Some of the NPM packages had bloated sizes.</li>
+            <li>Some heavy resources (TinyMCE) which an average user did not make use of, was still downloaded
+              nonetheless.</li>
+          </ol>
+        </p>
+        <h2><a id="solutions" href="#solutions"></a>Solution</h2>
+        <br />
+        <p>
+          <ol>
+            <li>Extracting the common resources into a separate file and make all others refer it rather than have their
+              own copy.</li>
+            <li>Migrating to newer, leaner NPM packages, thereby significantly reducing the bundle size.</li>
+            <li>Downloading certain resources only when they are needed and not all the time.</li>
+          </ol>
+        </p>
+        <h2><a id="implementation" href="#implementation"></a>Implementation</h2>
+        <br />
+        <p>
+          <ol>
+            <li>First we needed a way to measure the bundle size. For this a Webpack Bundle Analyzer was built into WikiEduDashboard via
+              <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3879">#3879</a>
+            </li>
+            <li>We had lots of varied tooling in the build process. We decided to have everything in Webpack. That was achieved via
+              <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/4038">#4038</a>
+            </li>
+            <li>Having put all build process within Webpack, it was a bit slow for developing. Hence Parallel Webpack was added in
+              <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/4054">#4054</a>
+            </li>
+            <li>
+              <code>lodash</code> was migrated to <code>lodash-es</code> in <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/4059">#4059</a>
+            </li>
+            <li>
+              Upgraded to the latest, leaner <code>@sentry/browser</code> package in <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/4064">#4064</a>
+            </li>
+            <li>
+              Shared code was optimised in <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/4079">#4079</a>
+            </li>
+            <li>
+              Unused locale files and methods were removed from Moment in <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/4083">#4083</a>
+            </li>
+            <li>
+              JavaScript code that was supposed to be loaded on <code>DOMContentReady</code> but that which wasn't, was loaded correctly in <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/4088">#4088</a>
+            </li>
+            <li>
+              TinyMCE was dynamically loaded only when needed in <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/4101">#4101</a>
+            </li>
+          </ol>
+        </p>
+        <h2><a id="jscover" href="#jscover"></a>JavaScript Coverage</h2>
+        <br />
+        <p>Another part of the work I did was to generate coverage report for the JavaScript. Coverage reports are
+          extremely useful as they let you know how much of your code is covered by the tests and where the places that
+          have missed out on, are.</p>
+        <p>Generally, the higher the coverage, more robust an application becomes. But there weren&rsquo;t
+          well-documented ways of getting this coverage data. After much searching and experimenting, I used JSCover, a
+          Java tool to instrument the code and generate the coverage reports.</p>
+        <p>The initial version of the coverage did not prove to be too useful as it was done on a huge concatenated
+          file. I tinkered around with the Webpack outputted files and managed to breakdown the modules into their own
+          files.</p>
+        <p>The result is that we now have an extensive coverage report for each and every individual file which is
+          great!</p>
+        <p>On the whole, my time with WikiEduDashboard, this summer, has been an enriching experience. Sage Ross has
+          been a wonderful mentor as always. I got to know other people within Wikimedia organisation. It has been one
+          hell of a ride on the whole and I am thankful I rode the shotgun.</p>
+      </section>
+    </article>
+  </main>
+</body>
+
+</html>

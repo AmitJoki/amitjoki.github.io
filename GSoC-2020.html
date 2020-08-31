@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <h1>WikiEduDashboard</h1>
+    <h1>Wiki Education Dashboard</h1>
     <p>Google Summer of Code 2020</p>
     <nav>
       <ul>
@@ -27,22 +27,21 @@
       <section>
         <p>I was part of Google Summer of Code 2019 with
           Wikimedia and I was overjoyed when I came to know that I was going to work with the amazing folks (read: the
-          best mentor anyone could get: Sage Ross) at WikiEduDashboard once again as part of Google Summer of Code 2020.
+          best mentor anyone could get: Sage Ross) at Wiki Education once again as part of Google Summer of Code 2020.
         </p>
         <p>In 2019, my project was something discrete. I could point you to the parts I worked on which weren&rsquo;t
           there before and I could go, &ldquo;Hey, see this feature? I worked on it!&rdquo;</p>
         <p>But it was going to be different this time around, for my project was abstract, something that could only be
-          felt. My proposal was to improve the loading speed of WikiEduDashboard.</p>
-        <p>The User Experience for people with low-bandwidth internet was not upto the mark. There were lots of
+          felt. My proposal was to improve the loading speed of the Dashboard.</p>
+        <p>The User Experience for people with low-bandwidth internet was not up to the mark. There were lots of
           resources needlessly being downloaded which was making the website seem slow.</p>
         <h2><a id="problems" href="#problems"></a>Problem</h2>
         <br />
         <p>
           <ol>
             <li>Redundant resources were being downloaded.</li>
-            <li>Some of the NPM packages had bloated sizes.</li>
-            <li>Some heavy resources (TinyMCE) which an average user did not make use of, was still downloaded
-              nonetheless.</li>
+            <li>Some of the JavaScript libraries had bloated sizes.</li>
+            <li>Some heavy resources which are only used by program organizers were downloaded by everyone.</li>
           </ol>
         </p>
         <h2><a id="solutions" href="#solutions"></a>Solution</h2>
@@ -51,7 +50,7 @@
           <ol>
             <li>Extracting the common resources into a separate file and make all others refer it rather than have their
               own copy.</li>
-            <li>Migrating to newer, leaner NPM packages, thereby significantly reducing the bundle size.</li>
+            <li>Migrating to newer, leaner libraries, thereby significantly reducing the bundle size.</li>
             <li>Downloading certain resources only when they are needed and not all the time.</li>
           </ol>
         </p>
@@ -59,7 +58,7 @@
         <br />
         <p>
           <ol>
-            <li>First we needed a way to measure the bundle size. For this a Webpack Bundle Analyzer was built into WikiEduDashboard via
+            <li>First we needed a way to measure the bundle size. For this a Webpack Bundle Analyzer was built into Wiki Education Dashboard via
               <a href="https://github.com/WikiEducationFoundation/WikiEduDashboard/pull/3879">#3879</a>
             </li>
             <li>We had lots of varied tooling in the build process. We decided to have everything in Webpack. That was achieved via
@@ -88,13 +87,24 @@
             </li>
           </ol>
         </p>
+        <h2><a id="numbers" href="#numbers"></a>Stats</h2>
+        <br />
+        <p>
+          Now let’s talk some numbers. Before this project began, the overall size of the resources tha were being downloaded on an average client’s browser was nearly <b>4.43 MB</b> every time.
+        </p>
+        <p>
+          Now, after we have extracted all the shared code into its own file, it comes to <b>3.03 MB</b> and there’s a further reduction of nearly <b>900 KB</b> in the form of not loading the rich text editor TinyMCE for users who don't need it.
+        </p>
+        <p>
+          So the final tally now comes up at near <b>2.13 MB</b> — more than <b>50%</b> reduction from the previous resource sizes.
+          On top of it, all the resources were being downloaded every time a new change is deployed — which is quite often. But now with the shared library code being put in a separate file, nearly <b>1.14 MB</b> of the resources will be only needed the first time. The library code changes relatively rarely, so caching it separately saves another <b>1.14 MB</b> if you've visited the site before. Altogether, these changes make the page loading experience faster for people with low-bandwidth internet.
+        </p>
         <h2><a id="jscover" href="#jscover"></a>JavaScript Coverage</h2>
         <br />
         <p>Another part of the work I did was to generate coverage report for the JavaScript. Coverage reports are
-          extremely useful as they let you know how much of your code is covered by the tests and where the places that
-          have missed out on, are.</p>
+          extremely useful as they let you know how much of your code is covered by the tests, and identify the code that isn't being tested — which therefore you might break without realizing it.</p>
         <p>Generally, the higher the coverage, more robust an application becomes. But there weren&rsquo;t
-          well-documented ways of getting this coverage data. After much searching and experimenting, I used JSCover, a
+          well-documented ways of getting this JavaScript coverage data from the main type of tests the Dashboard relies on. After much searching and experimenting, I used JSCover, a
           Java tool to instrument the code and generate the coverage reports.</p>
         <p>The initial version of the coverage did not prove to be too useful as it was done on a huge concatenated
           file. I tinkered around with the Webpack outputted files and managed to breakdown the modules into their own
@@ -106,7 +116,7 @@
               alt="JSCover report for admin_role_spec.rb" data-action="zoom">
             <figcaption><em>JSCover report for admin_role_spec.rb</em></figcaption>
           </figure>
-          The result is that we now have an extensive coverage report for each and every individual file which is
+          The result is that we now have an extensive coverage report for each and every individual file, which is
           great!
         </p>
         <p>
@@ -126,7 +136,7 @@
   </main>
   <footer>
     <h1><a id="Thank_you"></a>Thank you,</h1>
-    <p>Rage Soss<br>
+    <p>Sage Ross<br>
       Couldn’t have done it without you. It has been one
       hell of a ride and I am thankful I rode the shotgun.</p>
   </footer>

@@ -99,9 +99,9 @@
           So the final tally now comes up at near <b>2.13 MB</b> — more than <b>50%</b> reduction from the previous resource sizes.
           On top of it, all the resources were being downloaded every time a new change is deployed — which is quite often. But now with the shared library code being put in a separate file, nearly <b>1.14 MB</b> of the resources will be only needed the first time. The library code changes relatively rarely, so caching it separately saves another <b>1.14 MB</b> if you've visited the site before. Altogether, these changes make the page loading experience faster for people with low-bandwidth internet.
         </p>
-        <h2><a id="jscover" href="#jscover"></a>JavaScript Coverage</h2>
+        <h2><a id="jscover" href="#jscover"></a>Stretch Goal - JavaScript Coverage</h2>
         <br />
-        <p>Another part of the work I did was to generate coverage report for the JavaScript. Coverage reports are
+        <p>As I completed the objectives of my proposal earlier than anticipated, I worked on the stretch goal of generating coverage report for the JavaScript. Coverage reports are
           extremely useful as they let you know how much of your code is covered by the tests, and identify the code that isn't being tested — which therefore you might break without realizing it.</p>
         <p>Generally, the higher the coverage, more robust an application becomes. But there weren&rsquo;t
           well-documented ways of getting this JavaScript coverage data from the main type of tests the Dashboard relies on. After much searching and experimenting, I used JSCover, a
